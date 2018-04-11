@@ -1,4 +1,4 @@
-public class Status extends Content{
+public class Status implements ContentInterface{
 
   private String statusString;
 
@@ -16,9 +16,11 @@ public class Status extends Content{
   }
   public void void thumbsUp(){
 
+
   }
 
   public void contentStatus(){
+    
 
   }
 

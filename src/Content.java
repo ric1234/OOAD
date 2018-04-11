@@ -1,10 +1,16 @@
-public abstract class Content{
+public class Content implements ContentInterface{
 
   private String contentID;
   public int thumbsUpCount;
 
-  abstract void updateContent();
-  abstract void thumbsUp();
-  abstract void contentStatus();
+  void updateContent(){
+    
+  }
+  void thumbsUp(){
+
+  }
+  void contentStatus(){
+
+  }
 
 }

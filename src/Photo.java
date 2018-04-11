@@ -1,4 +1,4 @@
-public class Photo extends Content{
+public class Photo implements ContentInterface{
 
   private Image image_;
 
