@@ -63,5 +63,10 @@ public class PersonService {
 //		topics.removeIf(t->t.getId().equals(id));
 		personRepository.delete(id);
 	}
+	
+	
+	public Person findByUsernameAndPassword(String username, String password) {
+		return personRepository.findByUsernameAndPassword(username, password);
+	}
 
 }

@@ -46,5 +46,24 @@ public class TestController {
 		
 		return "welcomePage";
 	}
+	
+	@RequestMapping("/login")
+	public String login(HttpServletRequest request) {
+		request.setAttribute("mode", "MODE_LOGIN");
+		return "welcomePage";
+	}
+	
+	@RequestMapping ("/login-user")
+	public String loginUser(@ModelAttribute Person person, HttpServletRequest request) {
+		if(personService.findByUsernameAndPassword(person.getUsername(), person.getPassword())!=null) {
+			return "homepage";
+		}
+		else {
+			request.setAttribute("error", "Invalid Username or Password");
+			request.setAttribute("mode", "MODE_LOGIN");
+			return "welcomePage";
+			
+		}
+	}
 
 }
