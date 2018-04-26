@@ -20,10 +20,19 @@ public class PersonService {
 //			));
 	public List<Person> getAllPerson(){
 //		return topics;
-		List<Person> topics = new ArrayList<>();
+		List<Person> persons = new ArrayList<>();
 		personRepository.findAll()
-		.forEach(topics::add);
-		return topics;
+		.forEach(persons::add);
+		return persons;
+	}
+	
+	public List<Person> showAllPersons(){
+		List<Person> persons = new ArrayList<Person>();
+		for(Person person : personRepository.findAll()) {
+			persons.add(person);
+		}
+		
+		return persons;
 	}
 	
 	public Person getPerson(String id) {
@@ -32,9 +41,9 @@ public class PersonService {
 		
 	}
 	
-	public void addPerson(Person topic) {
+	public void addPerson(Person person) {
 //		topics.add(topic);
-		personRepository.save(topic);
+		personRepository.save(person);
 	}
 	
 	public void updatePerson(String id, Person topic) {

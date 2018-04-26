@@ -17,7 +17,7 @@ public class PersonController {
 	
 	// By default this is GET
 	@RequestMapping("/persons")
-	public List<Person> getAllTopics() {
+	public List<Person> getAllPersons() {
 		return personService.getAllPerson();
 	}
 	
