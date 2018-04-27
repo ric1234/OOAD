@@ -59,9 +59,10 @@ public class TestController {
 		request.setAttribute("mode", "MODE_LOGIN");
 		return "welcomePage";
 	}
-	
-	@RequestMapping ("/login-user")
+
+	@RequestMapping ("/login-user-richard")
 	public String loginUser(@ModelAttribute Person person, HttpServletRequest request) {
+		
 		if(personService.findByUsernameAndPassword(person.getUsername(), person.getPassword())!=null) {
 			return "searchfriendpage";
 		}
@@ -72,6 +73,27 @@ public class TestController {
 			
 		}
 	}
+
+	
+	@RequestMapping ("/login-user")
+	public String loginUser(@ModelAttribute Person person, HttpServletRequest request) {
+		
+		if(personService.findByUsernameAndPassword(person.getUsername(), person.getPassword())!=null) {
+			
+			request.setAttribute("name", person.getUsername());
+			request.setAttribute("friends", person.getFriends());
+			request.setAttribute("content", person.getStatus());
+			request.setAttribute("emotion", person.getFeeling());
+			return "homepage";
+	}
+		else {
+			request.setAttribute("error", "Invalid Username or Password");
+			request.setAttribute("mode", "MODE_LOGIN");
+			return "welcomePage";
+			
+		}
+	}
+
 	@RequestMapping ("/possible_friend_match")
 	public String lookForFriend(@ModelAttribute Person person, HttpServletRequest request) {
 		//searchUserService.searchUserFriend(new SearchByEmailStrategy(enteredString));
@@ -79,6 +101,18 @@ public class TestController {
 		request.setAttribute("persons", temp_person);
 		//searchUserService.searchUserFriend(new SearchByPhoneStrategy(enteredString));
 		return "friend_results";
+
+	
+	
+	@PostMapping("/add-friend")
+	public String addFriend(@ModelAttribute Person person,BindingResult bindingResult, HttpServletRequest request) {
+		Person person_search = personService.getPerson(person.getUsername());
+		person_search.friends.add(person.getUsername());
+		personService.addPerson(person_search);			
+		request.setAttribute("friends", person_search.getFriends());		
+		request.setAttribute("mode", "MODE_FRIENDS");
+		return "homepage";
+
 	}
 
 }

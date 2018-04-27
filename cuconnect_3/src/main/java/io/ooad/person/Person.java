@@ -1,5 +1,9 @@
 package io.ooad.person;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -17,14 +21,39 @@ public class Person {
 	private String password;
 	private String email;
 	private String phone;
+
+	//private ArrayList<String> friends = new ArrayList<String>(Arrays.asList("jay","nick","dave","adam"));
+	public ArrayList<String> friends =  new ArrayList<String>();
+	private String status ="status I hate java";
+	private String feeling = "feeling elated";
+	
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getFeeling() {
+		return feeling;
+	}
+
+	public void setFeeling(String feeling) {
+		this.feeling = feeling;
+	}
+
+	
 	
 	public Person() {
-		
+	
+		  
 	}
 	
 	public Person( String id,String name, String description, String username, String firstname, String lastname, String password, int age, String phone, String email) {
 		super();
-		//this.id = id;
+		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.age = age;
@@ -34,6 +63,9 @@ public class Person {
 		this.password = password;
 		this.email = email;
 		this.phone = phone;
+		this.friends = new ArrayList<String>();
+		
+//		this.friends = new ArrayList<String>(Arrays.asList("jay","nick","dave","adam"));
 	}
 	public String getId() {
 		return id;
@@ -95,6 +127,7 @@ public class Person {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -108,6 +141,15 @@ public class Person {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+
+
+	public ArrayList<String> getFriends() {
+		return friends;
+	}
+
+	public void setFriends(ArrayList<String> friends) {
+		this.friends = friends;
+
 	}
 	
 	
