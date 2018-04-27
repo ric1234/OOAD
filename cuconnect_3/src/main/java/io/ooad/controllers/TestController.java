@@ -61,7 +61,7 @@ public class TestController {
 	}
 
 	@RequestMapping ("/login-user-richard")
-	public String loginUser(@ModelAttribute Person person, HttpServletRequest request) {
+	public String loginUserRichard(@ModelAttribute Person person, HttpServletRequest request) {
 		
 		if(personService.findByUsernameAndPassword(person.getUsername(), person.getPassword())!=null) {
 			return "searchfriendpage";
@@ -101,7 +101,7 @@ public class TestController {
 		request.setAttribute("persons", temp_person);
 		//searchUserService.searchUserFriend(new SearchByPhoneStrategy(enteredString));
 		return "friend_results";
-
+	}
 	
 	
 	@PostMapping("/add-friend")
