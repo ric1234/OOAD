@@ -90,6 +90,20 @@
 					value="${person.password }" />
 			</div>
 		</div>
+		<div class="form-group">
+			<label class="control-label col-md-3">Email</label>
+			<div class="col-md-7">
+				<input type="text" class="form-control" name="email"
+					value="${person.email }" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-3">Phone</label>
+			<div class="col-md-7">
+				<input type="text" class="form-control" name="phone"
+					value="${person.phone }" />
+			</div>
+		</div>
 		<div class="form-group ">
 			<input type="submit" class="btn btn-primary" value="Register" />
 		</div>

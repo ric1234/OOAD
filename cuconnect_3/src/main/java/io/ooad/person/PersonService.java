@@ -40,6 +40,12 @@ public class PersonService {
 		return personRepository.findOne(id);
 		
 	}
+	public Person getPersonByUsername(String username) {
+//		return topics.stream().filter(t->t.getId().equals(id)).findFirst().get();
+		return personRepository.findOne(username);
+		
+	}
+	
 	
 	public void addPerson(Person person) {
 //		topics.add(topic);
@@ -64,10 +70,22 @@ public class PersonService {
 		personRepository.delete(id);
 	}
 	
-	
 	public Person findByUsernameAndPassword(String username, String password) {
 		return personRepository.findByUsernameAndPassword(username, password);
 	}
+	
+	public Person findByUsername(String username) {
+		return personRepository.findByUsername(username);
+	}
+	
+	public Person findByEmail(String email) {
+		return personRepository.findByEmail(email);
+	}
+	
+	public Person findByPhone(String phone) {
+		return personRepository.findByPhone(phone);
+	}
+	
 
 	public Object showAllfriends() {
 		

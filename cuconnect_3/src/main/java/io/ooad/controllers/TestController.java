@@ -12,12 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import io.ooad.person.Person;
 import io.ooad.person.PersonService;
+import io.ooad.person.SearchUserService;
+import io.ooad.person.SearchByEmailStrategy;
+import io.ooad.person.SearchByUsernameStrategy;
+import io.ooad.person.SearchByPhoneStrategy;
 
 @Controller
 public class TestController {
 	
 	@Autowired
 	private PersonService personService;
+	
+	@Autowired
+	private SearchUserService searchUserService;
 	
 	@RequestMapping("/welcome")
 	public String welcome(HttpServletRequest request) {
@@ -52,6 +59,21 @@ public class TestController {
 		request.setAttribute("mode", "MODE_LOGIN");
 		return "welcomePage";
 	}
+
+	@RequestMapping ("/login-user-richard")
+	public String loginUser(@ModelAttribute Person person, HttpServletRequest request) {
+		
+		if(personService.findByUsernameAndPassword(person.getUsername(), person.getPassword())!=null) {
+			return "searchfriendpage";
+		}
+		else {
+			request.setAttribute("error", "Invalid Username or Password");
+			request.setAttribute("mode", "MODE_LOGIN");
+			return "welcomePage";
+			
+		}
+	}
+
 	
 	@RequestMapping ("/login-user")
 	public String loginUser(@ModelAttribute Person person, HttpServletRequest request) {
@@ -71,6 +93,15 @@ public class TestController {
 			
 		}
 	}
+
+	@RequestMapping ("/possible_friend_match")
+	public String lookForFriend(@ModelAttribute Person person, HttpServletRequest request) {
+		//searchUserService.searchUserFriend(new SearchByEmailStrategy(enteredString));
+		Person temp_person =searchUserService.searchUserFriend(new SearchByUsernameStrategy(person.getUsername(), personService), personService);
+		request.setAttribute("persons", temp_person);
+		//searchUserService.searchUserFriend(new SearchByPhoneStrategy(enteredString));
+		return "friend_results";
+
 	
 	
 	@PostMapping("/add-friend")
@@ -81,6 +112,7 @@ public class TestController {
 		request.setAttribute("friends", person_search.getFriends());		
 		request.setAttribute("mode", "MODE_FRIENDS");
 		return "homepage";
+
 	}
 
 }

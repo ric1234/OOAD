@@ -19,6 +19,9 @@ public class Person {
 	private String lastName;
 	private int age;
 	private String password;
+	private String email;
+	private String phone;
+
 	//private ArrayList<String> friends = new ArrayList<String>(Arrays.asList("jay","nick","dave","adam"));
 	public ArrayList<String> friends =  new ArrayList<String>();
 	private String status ="status I hate java";
@@ -48,7 +51,7 @@ public class Person {
 		  
 	}
 	
-	public Person( String id,String name, String description, String username, String firstname, String lastname, String password, int age ) {
+	public Person( String id,String name, String description, String username, String firstname, String lastname, String password, int age, String phone, String email) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -58,6 +61,8 @@ public class Person {
 		this.firstName = firstname;
 		this.lastName = lastname;
 		this.password = password;
+		this.email = email;
+		this.phone = phone;
 		this.friends = new ArrayList<String>();
 		
 //		this.friends = new ArrayList<String>(Arrays.asList("jay","nick","dave","adam"));
@@ -123,12 +128,28 @@ public class Person {
 		this.password = password;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+
+
 	public ArrayList<String> getFriends() {
 		return friends;
 	}
 
 	public void setFriends(ArrayList<String> friends) {
 		this.friends = friends;
+
 	}
 	
 	
