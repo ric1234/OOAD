@@ -69,4 +69,9 @@ public class PersonService {
 		return personRepository.findByUsernameAndPassword(username, password);
 	}
 
+	public Object showAllfriends() {
+		
+		return null;
+	}
+
 }

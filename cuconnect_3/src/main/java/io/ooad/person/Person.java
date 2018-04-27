@@ -1,5 +1,9 @@
 package io.ooad.person;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -15,14 +19,38 @@ public class Person {
 	private String lastName;
 	private int age;
 	private String password;
+	//private ArrayList<String> friends = new ArrayList<String>(Arrays.asList("jay","nick","dave","adam"));
+	public ArrayList<String> friends =  new ArrayList<String>();
+	private String status ="status I hate java";
+	private String feeling = "feeling elated";
+	
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getFeeling() {
+		return feeling;
+	}
+
+	public void setFeeling(String feeling) {
+		this.feeling = feeling;
+	}
+
+	
 	
 	public Person() {
-		
+	
+		  
 	}
 	
-	public Person( String id,String name, String description, String username, String firstname, String lastname, String password, int age) {
+	public Person( String id,String name, String description, String username, String firstname, String lastname, String password, int age ) {
 		super();
-		//this.id = id;
+		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.age = age;
@@ -30,6 +58,9 @@ public class Person {
 		this.firstName = firstname;
 		this.lastName = lastname;
 		this.password = password;
+		this.friends = new ArrayList<String>();
+		
+//		this.friends = new ArrayList<String>(Arrays.asList("jay","nick","dave","adam"));
 	}
 	public String getId() {
 		return id;
@@ -90,6 +121,14 @@ public class Person {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public ArrayList<String> getFriends() {
+		return friends;
+	}
+
+	public void setFriends(ArrayList<String> friends) {
+		this.friends = friends;
 	}
 	
 	

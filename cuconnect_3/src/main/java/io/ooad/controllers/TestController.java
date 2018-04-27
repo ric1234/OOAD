@@ -55,15 +55,32 @@ public class TestController {
 	
 	@RequestMapping ("/login-user")
 	public String loginUser(@ModelAttribute Person person, HttpServletRequest request) {
+		
 		if(personService.findByUsernameAndPassword(person.getUsername(), person.getPassword())!=null) {
+			
+			request.setAttribute("name", person.getUsername());
+			request.setAttribute("friends", person.getFriends());
+			request.setAttribute("content", person.getStatus());
+			request.setAttribute("emotion", person.getFeeling());
 			return "homepage";
-		}
+	}
 		else {
 			request.setAttribute("error", "Invalid Username or Password");
 			request.setAttribute("mode", "MODE_LOGIN");
 			return "welcomePage";
 			
 		}
+	}
+	
+	
+	@PostMapping("/add-friend")
+	public String addFriend(@ModelAttribute Person person,BindingResult bindingResult, HttpServletRequest request) {
+		Person person_search = personService.getPerson(person.getUsername());
+		person_search.friends.add(person.getUsername());
+		personService.addPerson(person_search);			
+		request.setAttribute("friends", person_search.getFriends());		
+		request.setAttribute("mode", "MODE_FRIENDS");
+		return "homepage";
 	}
 
 }
