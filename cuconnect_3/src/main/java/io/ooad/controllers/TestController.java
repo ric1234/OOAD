@@ -59,25 +59,14 @@ public class TestController {
 		request.setAttribute("mode", "MODE_LOGIN");
 		return "welcomePage";
 	}
-
-	@RequestMapping ("/login-user-richard")
-	public String loginUserRichard(@ModelAttribute Person person, HttpServletRequest request) {
-		
-		if(personService.findByUsernameAndPassword(person.getUsername(), person.getPassword())!=null) {
-			return "searchfriendpage";
-		}
-		else {
-			request.setAttribute("error", "Invalid Username or Password");
-			request.setAttribute("mode", "MODE_LOGIN");
-			return "welcomePage";
-			
-		}
+	
+	@RequestMapping("/search-users")
+	public String search_users(HttpServletRequest request) {
+		return "searchfriendpage";
 	}
 
-	
 	@RequestMapping ("/login-user")
 	public String loginUser(@ModelAttribute Person person, HttpServletRequest request) {
-		
 		if(personService.findByUsernameAndPassword(person.getUsername(), person.getPassword())!=null) {
 			
 			request.setAttribute("name", person.getUsername());
@@ -96,11 +85,24 @@ public class TestController {
 
 	@RequestMapping ("/possible_friend_match")
 	public String lookForFriend(@ModelAttribute Person person, HttpServletRequest request) {
-		//searchUserService.searchUserFriend(new SearchByEmailStrategy(enteredString));
-		Person temp_person =searchUserService.searchUserFriend(new SearchByUsernameStrategy(person.getUsername(), personService), personService);
-		request.setAttribute("persons", temp_person);
-		//searchUserService.searchUserFriend(new SearchByPhoneStrategy(enteredString));
-		return "friend_results";
+		Person temp_person = null;
+		temp_person = searchUserService.searchUserFriend(new SearchByUsernameStrategy(person.getUsername(), personService), personService);
+		if(temp_person != null) {
+			request.setAttribute("persons", temp_person);
+			return "friend_results";
+		}
+		temp_person = searchUserService.searchUserFriend(new SearchByEmailStrategy(person.getEmail(), personService), personService);
+		if(temp_person != null) {
+			request.setAttribute("persons", temp_person);
+			return "friend_results";
+		}
+		temp_person = searchUserService.searchUserFriend(new SearchByPhoneStrategy(person.getPhone(), personService), personService);
+		if(temp_person != null) {
+			request.setAttribute("persons", temp_person);
+			return "friend_results";
+		}
+		return "welcomePage";
+		
 	}
 	
 	

@@ -31,7 +31,7 @@
 	</div>
 
 
-	<h1>Welcome back <c:out value="${name}" /></h1>
+	<h1>Welcome back</h1>
 
 	<div class="container text-center">
 		<h3></h3>
@@ -41,7 +41,7 @@
 				<label class="control-label col-md-3">Add Friend</label>
 				<div class="col-md-7">
 					<input type="text" class="form-control" name="username"
-						value="${person.username}" />s
+						value="${person.username}" />
 				</div>
 				<input type="submit" class="btn btn-primary" value="Add" />
 			</div>

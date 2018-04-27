@@ -24,8 +24,8 @@ public class Person {
 
 	//private ArrayList<String> friends = new ArrayList<String>(Arrays.asList("jay","nick","dave","adam"));
 	public ArrayList<String> friends =  new ArrayList<String>();
-	private String status ="status I hate java";
-	private String feeling = "feeling elated";
+	private String status ="Waiting for summer!!";
+	private String feeling = "feeling happy";
 	
 	
 	public String getStatus() {

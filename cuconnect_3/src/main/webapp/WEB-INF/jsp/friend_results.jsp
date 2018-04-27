@@ -17,11 +17,44 @@
 
 </head>
 <body>
-
-<h1> Friend page -- return username and email  </h1> <br>
-					<c:out value="${persons}">
-								<h1>${persons.id}</h1>
+<div role="navigation">
+		<div class="navbar navbar-inverse">
+			<a href="/welcome" class="navbar-brand">CU-Connect</a>
+		</div>
+	</div>
+<h1> Matches </h1> <br>
+			<div class="container text-center" id="tasksDiv">
+				<hr>
+				<div class="table-responsive">
+					<table class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>UserName</th>
+								<th>First Name</th>
+								<th>LastName</th>
+								<th>Age</th>
+						 	 	<th>Email</th>
+						 	 	<th>Phone</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:out value="${person}">
+								<tr>
+									<td>${person.id}</td>
+									<td>${person.username}</td>
+									<td>${person.firstName}</td>
+									<td>${person.lastName}</td>
+									<td>${person.age}</td>
+									<td>${person.email}</td>
+									<td>${person.phone}</td>
+								  	
+								</tr>
 							</c:out>
+						</tbody>
+					</table>
+				</div>
+			</div>
 
 </body>
 </html>
