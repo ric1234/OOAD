@@ -15,12 +15,14 @@ public class Person {
 	private String lastName;
 	private int age;
 	private String password;
+	private String email;
+	private String phone;
 	
 	public Person() {
 		
 	}
 	
-	public Person( String id,String name, String description, String username, String firstname, String lastname, String password, int age) {
+	public Person( String id,String name, String description, String username, String firstname, String lastname, String password, int age, String phone, String email) {
 		super();
 		//this.id = id;
 		this.name = name;
@@ -30,6 +32,8 @@ public class Person {
 		this.firstName = firstname;
 		this.lastName = lastname;
 		this.password = password;
+		this.email = email;
+		this.phone = phone;
 	}
 	public String getId() {
 		return id;
@@ -90,6 +94,20 @@ public class Person {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	
 	

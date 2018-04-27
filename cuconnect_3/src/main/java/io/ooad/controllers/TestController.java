@@ -73,10 +73,11 @@ public class TestController {
 		}
 	}
 	@RequestMapping ("/possible_friend_match")
-	public String lookForFriend(@ModelAttribute String enteredString, HttpServletRequest request) {
-		searchUserService.searchUserFriend(new SearchByEmailStrategy(enteredString));
-		searchUserService.searchUserFriend(new SearchByUsernameStrategy(enteredString));
-		searchUserService.searchUserFriend(new SearchByPhoneStrategy(enteredString));
+	public String lookForFriend(@ModelAttribute Person person, HttpServletRequest request) {
+		//searchUserService.searchUserFriend(new SearchByEmailStrategy(enteredString));
+		Person temp_person =searchUserService.searchUserFriend(new SearchByUsernameStrategy(person.getUsername(), personService), personService);
+		request.setAttribute("persons", temp_person);
+		//searchUserService.searchUserFriend(new SearchByPhoneStrategy(enteredString));
 		return "friend_results";
 	}
 

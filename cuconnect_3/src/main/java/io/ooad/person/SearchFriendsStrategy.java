@@ -1,5 +1,5 @@
 package io.ooad.person;
 
 public interface SearchFriendsStrategy {
-	public void searchUser();
+	public Person searchUser(PersonService personService);
 }

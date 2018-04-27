@@ -8,11 +8,11 @@
 </head>
 <body>
 	<img src = "/static/img/cu_banner.jpg">
-	<h1> Welcome ${person.firstName} </h1>
+	<h1> Welcome </h1>
 	<br>
 	<h3>Looking for Friends</h3>
 	<form class="form-horizontal" method="POST" action="possible_friend_match">
-		<input type="text" class="form_friend" name="friend_search" value=${enteredString}/>
+		<input type="text" class="form_friend" name="username" value="${person.username}" />
 		<input type="submit" value="Search" />
 		<!--  <div id="button"><a href="login.html">Search Username</a></div>
 		<input type="submit" value="Search Username" />

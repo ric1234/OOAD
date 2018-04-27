@@ -1,12 +1,14 @@
 package io.ooad.person;
 
+
 public class SearchByUsernameStrategy implements SearchFriendsStrategy {
 	private String m_username;
-	public SearchByUsernameStrategy(String entered_username) {
+	private PersonService p;
+	public SearchByUsernameStrategy(String entered_username, PersonService personService) {
 		this.m_username = entered_username;
 	}
 	@Override
-	public void searchUser() {
-		System.out.println(m_username);
+	public Person searchUser(PersonService personService) {
+		return personService.getPersonByUsername(m_username);
 	}
 }

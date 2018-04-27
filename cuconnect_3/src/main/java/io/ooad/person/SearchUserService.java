@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SearchUserService {
-	public void searchUserFriend(SearchFriendsStrategy searchMethod){
-		searchMethod.searchUser();
+	public Person searchUserFriend(SearchFriendsStrategy searchMethod, PersonService personService){
+		return searchMethod.searchUser(personService);
 	}
 }
