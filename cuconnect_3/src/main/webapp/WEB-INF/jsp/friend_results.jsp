@@ -5,9 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<h1>Logged in</h1>
 </head>
 <body>
-
+<h1> Friend page -- return username and email </h1>
 </body>
 </html>

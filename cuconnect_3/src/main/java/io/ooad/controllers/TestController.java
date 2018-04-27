@@ -12,12 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import io.ooad.person.Person;
 import io.ooad.person.PersonService;
+import io.ooad.person.SearchUserService;
+import io.ooad.person.SearchByEmailStrategy;
+import io.ooad.person.SearchByUsernameStrategy;
+import io.ooad.person.SearchByPhoneStrategy;
 
 @Controller
 public class TestController {
 	
 	@Autowired
 	private PersonService personService;
+	
+	@Autowired
+	private SearchUserService searchUserService;
 	
 	@RequestMapping("/welcome")
 	public String welcome(HttpServletRequest request) {
@@ -56,7 +63,7 @@ public class TestController {
 	@RequestMapping ("/login-user")
 	public String loginUser(@ModelAttribute Person person, HttpServletRequest request) {
 		if(personService.findByUsernameAndPassword(person.getUsername(), person.getPassword())!=null) {
-			return "homepage";
+			return "searchfriendpage";
 		}
 		else {
 			request.setAttribute("error", "Invalid Username or Password");
@@ -64,6 +71,13 @@ public class TestController {
 			return "welcomePage";
 			
 		}
+	}
+	@RequestMapping ("/possible_friend_match")
+	public String lookForFriend(@ModelAttribute String enteredString, HttpServletRequest request) {
+		searchUserService.searchUserFriend(new SearchByEmailStrategy(enteredString));
+		searchUserService.searchUserFriend(new SearchByUsernameStrategy(enteredString));
+		searchUserService.searchUserFriend(new SearchByPhoneStrategy(enteredString));
+		return "friend_results";
 	}
 
 }
